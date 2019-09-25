@@ -1,25 +1,22 @@
 # Doc settings
 
-This module is an alternative to using iframes for dispaying external documentation.
+This module is an alternative to using iframes.
 
 # Install
 
-Place this module in drupal/modules/custom/ 
+This module requires https://github.com/kllrthr/dp_markdown
 
-It should look like this: drupal/modules/custom/doc_page
+Place this module in drupal/modules/custom/ 
 
 Activate the module on the "extend" page. (/admin/modules)
 
-#Use
-
-Go to the permission page and add the permission: "Administer documentation page" to the role that should have access. This is not needed if you are user 1.
+# Use
 
 Navigate to /admin/config/content/doc and enter the url for the documentation page source. This for is also linked from the Configuration page.
 
 These are the pages set up so far:
 - /home
 - /gettingstarted
-- /documentation
 - /enrollment
 - /contingency
 
