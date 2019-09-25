@@ -69,6 +69,20 @@ class HtmlPageSettingsForm extends ConfigFormBase {
       '#required' => TRUE,
     ];
 
+    $form['html']['privacy_url'] = [
+      '#type' => 'textfield',
+      '#title' => $this->t('Privacy url'),
+      '#default_value' => $config->get('privacy_url'),
+      '#description' => $this->t('Override default Privacy content.')
+    ];
+
+    $form['html']['tsandcs_url'] = [
+      '#type' => 'textfield',
+      '#title' => $this->t('Terms of use url'),
+      '#default_value' => $config->get('tsandcs_url'),
+      '#description' => $this->t('Override default Terms of use content.')
+    ];
+
 
 
     return parent::buildForm($form, $form_state);
@@ -89,7 +103,6 @@ class HtmlPageSettingsForm extends ConfigFormBase {
       ->set('get_url', $form_state->getValue('get_url'))
       ->save();
 
-
     $this->config('doc.adminsettings')
       ->set('enrollment_url', $form_state->getValue('enrollment_url'))
       ->save();
@@ -97,6 +110,17 @@ class HtmlPageSettingsForm extends ConfigFormBase {
     $this->config('doc.adminsettings')
       ->set('contingency_url', $form_state->getValue('contingency_url'))
       ->save();
+
+    $this->config('doc.adminsettings')
+      ->set('privacy_url', $form_state->getValue('privacy_url'))
+      ->save();
+
+    $this->config('doc.adminsettings')
+      ->set('tsandcs_url', $form_state->getValue('tsandcs_url'))
+      ->save();
+
+    drupal_flush_all_caches();
+
   }
 
   /**
@@ -119,6 +143,5 @@ class HtmlPageSettingsForm extends ConfigFormBase {
     if ($form_state->getValue('contingency_url') != '' && UrlHelper::isValid($form_state->getValue('contingency_url'), TRUE) == FALSE) {
       $form_state->setErrorByName('contingency_url', $this->t("Contingency URL doesn't look right"));
     }
-
   }
 }
