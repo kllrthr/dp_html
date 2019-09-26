@@ -92,7 +92,7 @@ class HtmlContentBlock extends BlockBase implements ContainerFactoryPluginInterf
 //    $build['#cache'] = [
 //      'max-age' => -1,
 //    ];
-    $html = 'yoyo';
+    $html = '';
     if ($this->configuration['url']) {
       $html_controller = new HtmlPageController();
       $html = $html_controller->content($this->configuration['url']);
